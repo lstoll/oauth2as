@@ -471,7 +471,7 @@ func (s *Server) buildTokenResponse(ctx context.Context, alg SigningAlg, grant *
 	ac.Subject = grant.UserID
 	ac.ClientID = grant.ClientID
 	ac.Expiry = claims.UnixTime(atExp.Unix())
-	ac.Audience = claims.StrOrSlice{s.config.Issuer}
+	ac.Audience = claims.StrOrSlice{grant.ClientID}
 	ac.IssuedAt = claims.UnixTime(s.now().Unix())
 	ac.AuthTime = claims.UnixTime(grant.GrantedAt.Unix())
 	ac.JWTID = uuid.Must(uuid.NewRandom()).String()
