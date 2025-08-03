@@ -45,13 +45,7 @@ func (s *Server) Userinfo(w http.ResponseWriter, req *http.Request) {
 
 	// TODO - check the audience is the issuer, as we have hardcoded.
 
-	h, err := s.config.Keyset.HandleFor(SigningAlgRS256)
-	if err != nil {
-		herr := &oauth2.HTTPError{Code: http.StatusInternalServerError, Cause: err}
-		_ = oauth2.WriteError(w, req, herr)
-		return
-	}
-	ph, err := h.Public()
+	ph, err := (&pubHandle{h: s.config.Keyset}).PublicHandle(req.Context())
 	if err != nil {
 		herr := &oauth2.HTTPError{Code: http.StatusInternalServerError, Cause: err}
 		_ = oauth2.WriteError(w, req, herr)
