@@ -7,8 +7,11 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/lstoll/oauth2ext v1.0.0-beta.6
 	github.com/tink-crypto/tink-go/v2 v2.4.0
-	golang.org/x/crypto v0.40.0
 	golang.org/x/oauth2 v0.30.0
-	golang.org/x/text v0.27.0
-	google.golang.org/protobuf v1.36.6
+	golang.org/x/text v0.28.0
+)
+
+require (
+	golang.org/x/crypto v0.41.0 // indirect
+	google.golang.org/protobuf v1.36.7 // indirect
 )
